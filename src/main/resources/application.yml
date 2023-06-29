@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://14.63.226.76:9606/ljy_db
+    username: ljy_user
+    password: "!ljyUser329"
+
+mybatis:
+  type-aliases-package: com.adnstyle.dalnu_gw.domain
+  mapper-locations: mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+server:
+  port: 9064
