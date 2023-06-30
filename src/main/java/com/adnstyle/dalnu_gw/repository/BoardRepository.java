@@ -7,4 +7,10 @@ import org.apache.ibatis.annotations.Mapper;
 public interface BoardRepository {
     
     Board selectBoard();
+    
+    /**
+     * 게시판 글 등록
+     * @param board
+     */
+    void insertBoard(Board board);
 }

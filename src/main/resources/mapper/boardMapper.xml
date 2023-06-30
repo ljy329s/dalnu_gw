@@ -5,4 +5,21 @@
         SELECT *
         FROM board
     </select>
+
+<!--    게시판 글 등록-->
+    <insert id="insertBoard">
+        INSERT INTO board
+        (title, contents,created_by, board_type)
+        VALUES
+            (#{title},#{contents},#{createdBy},#{boardType})
+    </insert>
+
+<!--    게시판 글 삭제-->
+    <update id="deleteBoard">
+        UPDATE board
+        SET title =#{title},
+            contents =#{contents},
+            modified_date=now()
+            board_type=#{board_type}
+    </update>
 </mapper>
