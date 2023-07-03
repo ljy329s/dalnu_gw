@@ -41,7 +41,7 @@ public class Board extends Base implements Serializable {
     private String boardType;
     
     /**
-     * 첨부파일
+     * 첨부파일회
      */
     private List<String> attachList;
 }
