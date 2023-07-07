@@ -46,5 +46,19 @@ public class Base {
      */
     private String delYn;
     
+    /**
+     * 검색조건
+     */
+    private String searchType;
+    
+    /**
+     * 검색내용
+     */
+    private String searchValue;
+    
+    /**
+     * 페이지 핸들러
+     */
+    private PageHandler pageHandler;
     
 }

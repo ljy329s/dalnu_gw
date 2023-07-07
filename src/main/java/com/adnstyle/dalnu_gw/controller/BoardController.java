@@ -34,8 +34,8 @@ public class BoardController {
     /**
      * 게시판 전체 목록 조회
      */
-    @GetMapping
-    public List<Board>selectBoardList(){
+    @GetMapping("/{boardType}/{page}")
+    public List<Board>selectBoardList(@PathVariable("boardType") String boardType,@PathVariable("page") int page){
         return boardService.selectBoardList();
     }
     
@@ -47,6 +47,7 @@ public class BoardController {
     public void updateBoard(@RequestBody Board board){
         boardService.updateBoard(board);
     }
+    
     /**
      * 게시판 글 삭제
      */

@@ -4,6 +4,13 @@ spring:
     url: jdbc:mariadb://14.63.226.76:9606/ljy_db
     username: ljy_user
     password: "!ljyUser329"
+  file-upload:
+    upload-path: /Users/dalnu/dalnuGw
+
+  security:
+    user:
+      name: user
+      password: 1234
 
 mybatis:
   type-aliases-package: com.adnstyle.dalnu_gw.domain
@@ -11,5 +18,31 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 
+#jwt:
+#  header: Authorization
+#  secret-key: VlwEyVBsYt9V7zq57TejMnVUyzblYcfPQye08f7MGVA9XkHa
+#  prefix: Bearer
+#  access-time: 120000
+#  refresh-time: 1814400000
+jwt:
+  header: Authorization
+  secret-key: VlwEyVBsYt9V7zq57TejMnVUyzblYcfPQye08f7MGVA9XkHa
+  prefix: Bearer
+  issuer: ljy
+  access-time: 12000
+  refresh-time: 24000
+  refresh-alarm: 12000
+#  refresh-time: 1814400000
+
+
+redis:
+  host: localhost
+  port: 6379
+  reKey: ReT_
+  roleKey: Role_
+
 server:
   port: 9064
+  error:
+    whitelabel:
+      enabled: false

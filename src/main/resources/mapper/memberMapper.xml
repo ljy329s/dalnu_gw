@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.adnstyle.dalnu_gw.repository.MemberRepository">
+
+    <!--    직원 조회-->
+    <select id="selectMember" resultType="member">
+        SELECT *
+        FROM members
+        WHERE username = #{username}
+          AND del_yn = 'N'
+    </select>
+
+<!--    직원등록(회원가입)-->
+    <insert id="insertMember">
+        INSERT INTO members
+        (username, password, user_email, name, user_phone, user_birth,
+         employ_date, leave_date, company_tel_number, dept, rank)
+        VALUES (#{username}, #{password}, #{user_email}, #{name}, #{userPhone}, #{userBirth},
+                #{employDate}, #{leaveDate}, #{companyTelNumber}, #{dept}, #{rank})
+    </insert>
+</mapper>
