@@ -42,17 +42,40 @@
             <artifactId>spring-boot-starter-data-redis</artifactId>
             <version>2.6.0</version>
         </dependency>
-        <!--        바인딩관련       -->
+        <!--        바인딩관련  : XML 데이터와 Java 객체 간의 매핑을 처리     -->
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
             <version>2.3.1</version>
         </dependency>
+
+<!--    Jackson SON 데이터와 Java 객체 간의 매핑  -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
         <!--        yml을 생성자 주입 방식으로 사용하기 위함        -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>    <optional>true</optional>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
         </dependency>
+<!--        Batch작업을 위함-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-batch</artifactId>
+        </dependency>
+<!--       Quartz 특정시간으로 Batch작업을 하기 위함-->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+        </dependency>
+<!--채팅구현을 위한 webSocket-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -84,6 +107,10 @@
             <artifactId>mybatis-spring-boot-starter-test</artifactId>
             <version>2.3.1</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-batch</artifactId>
         </dependency>
     </dependencies>
 

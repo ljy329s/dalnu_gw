@@ -15,7 +15,7 @@
         INSERT INTO members
         (username, password, user_email, name, user_phone, user_birth,
          employ_date, leave_date, company_tel_number, dept, rank)
-        VALUES (#{username}, #{password}, #{user_email}, #{name}, #{userPhone}, #{userBirth},
+        VALUES (#{username}, #{password}, #{userEmail}, #{name}, #{userPhone}, #{userBirth},
                 #{employDate}, #{leaveDate}, #{companyTelNumber}, #{dept}, #{rank})
     </insert>
 </mapper>

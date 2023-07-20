@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.adnstyle.ljychat.model.repository.ChatRepository">
+    <!--로그인 한 유저가 들어가있는 모든 채팅방 조회-->
+    <!--    <select id="selectAllChatList" resultType="chatRoom">-->
+    <!--        select room_name, username, room_id-->
+    <!--        from chat_room-->
+    <!--        where room_name not in(-->
+    <!--            select DISTINCT room_name-->
+    <!--            from chat_room-->
+    <!--            where username = 'test')-->
+    <!--    </select>-->
+    <select id="selectAllChatList" resultType="chatRoom">
+        select room_id, room_name, username
+        from chat_room
+        where username != 'test'
+        and room_id in(
+        select distinct room_id
+        from chat_room
+        where username = 'test')
+    </select>
+
+    <select id="selectRoom" resultType="int">
+        select count(room_id)
+        from chat_room
+        where room_id = #{roomId}
+          and username = 'test'
+    </select>
+
+    <select id="selectSingleChat" resultType="string">
+        <![CDATA[
+        SELECT DISTINCT room_id
+        FROM chat_room
+        WHERE username IN (#{empName}, #{username})
+        GROUP BY room_id
+        HAVING COUNT(DISTINCT username) = 2
+        ]]>
+    </select>
+
+    <insert id="createSingleChatRoom" parameterType="map">
+        insert into chat_room(room_name, room_id, username, room_type)
+        select distinct member.name, #{roomId}, member.username, 'single'
+        from member
+                 left join chat_room
+                           on member.username = chat_room.username
+        where member.username in (#{empName}, #{username})
+    </insert>
+
+    <insert id="redisToDB" parameterType="list">
+        insert into chat_message(message, username, send_date, room_id, time_stamp)
+        values
+        <foreach collection='list' item='item' separator=','>
+            (
+            #{item.message},
+            #{item.username},
+            #{item.sendDate},
+            #{item.roomId},
+            #{item.timeStamp}
+            )
+        </foreach>
+    </insert>
+
+    <!--    채팅내역 불러오기 limit 부분은 동적으로 바꾸기-->
+    <select id="selectChatData" resultType="chatMessage">
+        select message, time_stamp, room_id, username, send_date
+        from (select message, time_stamp, room_id, username, send_date
+              from chat_message
+              where room_id = #{roomId}
+              order by time_stamp desc limit 0, 30) as A
+        order by time_stamp asc;
+    </select>
+</mapper>

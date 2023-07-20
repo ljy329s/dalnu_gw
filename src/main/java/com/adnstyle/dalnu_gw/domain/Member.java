@@ -73,7 +73,7 @@ public class Member extends Base implements Serializable {
     /**
      * 입사일자
      */
-    private LocalDateTime employDate;
+    private Date employDate;
     
     /**
      * 퇴사일자

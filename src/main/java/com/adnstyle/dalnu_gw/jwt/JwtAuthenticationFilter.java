@@ -104,7 +104,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         //토큰 생성
         tokenProvider.createToken(username, response);
         tokenProvider.refreshToken(username);
-        response.sendRedirect("/jyHome");
+//        response.sendRedirect("/jyHome");
     }
     
     /**

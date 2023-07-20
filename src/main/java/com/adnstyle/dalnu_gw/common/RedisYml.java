@@ -19,4 +19,5 @@ public class RedisYml {
     
     private final String roleKey;
     
+    private final String chatPrefix;//채팅관련
 }
